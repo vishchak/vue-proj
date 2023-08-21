@@ -11,6 +11,8 @@
       <p v-else>I have 1 or less skills :(</p>
 
       <div v-bind:class="{alert : showAlert, 'another-class' : showClass}"></div>
+
+      <div v-bind:class="alertObject"></div>
     </div>
   </div>
 </template>
@@ -27,7 +29,10 @@ export default {
         {"skill": "Frontend Developer"}
       ],
       showAlert: true,
-      showClass: true
+      showClass: true,
+      alertObject: {
+        alert: true
+      }
     };
   },
   methods: {
