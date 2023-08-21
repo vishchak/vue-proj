@@ -3,6 +3,8 @@
     {{ name }}
     <button v-on:click="changeName" v-bind:disabled="btnState">Change name</button>
   </div>
+  <h1 v-once>{{name}}</h1>
+{{ btnState ? 'The button is disabled' : 'The button is actives'}}
 </template>
 
 <script>
