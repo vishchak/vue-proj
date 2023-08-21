@@ -12,6 +12,7 @@
       <p class="quantity" v-else>I have 1 or less skills :(</p>
       <form @submit.prevent="addSkill">
         <input type="text" placeholder="Enter a skill you have..." v-model="skill">{{ skill }}
+        <input type="checkbox" id="checkbox" v-model="checked">
       </form>
       <div v-bind:class="{alert: showAlert, 'another-class': showClass}"></div>
 
@@ -41,7 +42,8 @@ export default {
       },
       bgColor: 'orange',
       bgWidth: '100%',
-      bgHeight: '30px'
+      bgHeight: '30px',
+      checked: false
     };
   },
   methods: {
@@ -52,6 +54,7 @@ export default {
     addSkill() {
       this.skills.push({skill: this.skill});
       this.skill = '';
+      console.log('The checkbox value is ' + this.checked)
     }
   }
 };
@@ -95,10 +98,11 @@ p {
   color: grey;
 }
 
-.quantity{
+.quantity {
   text-align: left;
   padding: 2px 0;
 }
+
 .container {
   box-shadow: 0 0 40px lightgrey;
 }
