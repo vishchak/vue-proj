@@ -8,10 +8,11 @@
       <ul>
         <li v-for="(data, index) in skills" :key="index">{{ index + 1 }}. {{ data.skill }}</li>
       </ul>
-      <p v-if="skills.length >= 1">I have more than 1 skill</p>
-      <p v-else>I have 1 or less skills :(</p>
-
-      <input type="text" placeholder="Enter a skill you have..." v-model="skill">{{ skill }}
+      <p class="quantity" v-if="skills.length >= 1">I have more than 1 skill</p>
+      <p class="quantity" v-else>I have 1 or less skills :(</p>
+      <form @submit.prevent="addSkill">
+        <input type="text" placeholder="Enter a skill you have..." v-model="skill">{{ skill }}
+      </form>
       <div v-bind:class="{alert: showAlert, 'another-class': showClass}"></div>
 
       <div v-bind:class="alertObject"></div>
@@ -47,6 +48,10 @@ export default {
     changeName() {
       this.name = 'New Name';
       this.btnState = !this.btnState;
+    },
+    addSkill() {
+      this.skills.push({skill: this.skill});
+      this.skill = '';
     }
   }
 };
@@ -90,6 +95,10 @@ p {
   color: grey;
 }
 
+.quantity{
+  text-align: left;
+  padding: 2px 0;
+}
 .container {
   box-shadow: 0 0 40px lightgrey;
 }
