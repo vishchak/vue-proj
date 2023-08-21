@@ -1,6 +1,7 @@
 <template>
   <div class="skills">
     {{ name }}
+    <button v-on:click="changeName" v-bind:disabled="btnState">Change name</button>
   </div>
 </template>
 
@@ -9,7 +10,8 @@ export default {
   name: 'MySkills',
   data() {
     return {
-      name: 'Course in Vue'
+      name: 'Course in Vue',
+      btnState: true
     }
   }
 }
