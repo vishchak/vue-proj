@@ -1,8 +1,8 @@
 <template>
-  <h1 v-once>{{ name }}</h1>
-  <button v-on:click="changeName" :disabled="btnState">Change name</button>
-  {{ btnState ? 'The button is disabled' : 'The button is active' }}
   <div class="container">
+    <h1 v-once>{{ name }}</h1>
+    <button v-on:click="changeName" :disabled="btnState">Change name</button>
+    {{ btnState ? 'The button is disabled' : 'The button is active' }}
     <div class="holder">
       <p>These are the skills that I possess</p>
       <ul>
@@ -11,7 +11,8 @@
       <p v-if="skills.length >= 1">I have more than 1 skill</p>
       <p v-else>I have 1 or less skills :(</p>
 
-      <div v-bind:class="{alert : showAlert, 'another-class' : showClass}"></div>
+      <input type="text" placeholder="Enter a skill you have..." v-model="skill">{{ skill }}
+      <div v-bind:class="{alert: showAlert, 'another-class': showClass}"></div>
 
       <div v-bind:class="alertObject"></div>
 
@@ -25,6 +26,7 @@ export default {
   name: 'MySkills',
   data() {
     return {
+      skill: '', // Fixed typo: Removed colon after v-model
       name: 'Course in Vue',
       btnState: true,
       skills: [
@@ -90,6 +92,16 @@ p {
 
 .container {
   box-shadow: 0 0 40px lightgrey;
+}
+
+
+input {
+  width: calc(100% - 40px);
+  border: 0;
+  padding: 20px;
+  font-size: 1.3em;
+  background-color: #323333;
+  color: #687F7F;
 }
 </style>
 
