@@ -7,6 +7,8 @@
       <ul>
         <li v-for="(data, index) in skills" :key="index">{{ index + 1 }}. {{ data.skill }}</li>
       </ul>
+      <p v-if="skills.length >= 1">I have more than 1 skill</p>
+      <p v-else>I have 1 or less skills :(</p>
     </div>
   </div>
 </template>
