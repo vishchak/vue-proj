@@ -10,7 +10,7 @@
       <p v-if="skills.length >= 1">I have more than 1 skill</p>
       <p v-else>I have 1 or less skills :(</p>
 
-      <div v-bind:class="{alert : showAlert}"></div>
+      <div v-bind:class="{alert : showAlert, 'another-class' : showClass}"></div>
     </div>
   </div>
 </template>
@@ -26,7 +26,8 @@ export default {
         {"skill": "Vue.js"},
         {"skill": "Frontend Developer"}
       ],
-      showAlert: true
+      showAlert: true,
+      showClass: true
     };
   },
   methods: {
@@ -59,6 +60,12 @@ a {
 
 .alert {
   background-color: yellow;
+  width: 100%;
+  height: 30px;
+}
+
+.another-class {
+  background-color: lightblue;
   width: 100%;
   height: 30px;
 }
