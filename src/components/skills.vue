@@ -1,10 +1,14 @@
 <template>
   <div class="skills">
-    {{ name }}
-    <button v-on:click="changeName" v-bind:disabled="btnState">Change name</button>
+    <h1 v-once>{{ name }}</h1>
+    <button v-on:click="changeName" :disabled="btnState">Change name</button>
+    {{ btnState ? 'The button is disabled' : 'The button is active' }}
+    <div class="holder">
+      <ul>
+        <li v-for="(data, index) in skills" :key="index">{{ index + 1 }}. {{ data.skill }}</li>
+      </ul>
+    </div>
   </div>
-  <h1 v-once>{{name}}</h1>
-{{ btnState ? 'The button is disabled' : 'The button is actives'}}
 </template>
 
 <script>
@@ -13,13 +17,22 @@ export default {
   data() {
     return {
       name: 'Course in Vue',
-      btnState: true
+      btnState: true,
+      skills: [
+        {"skill": "Vue.js"},
+        {"skill": "Frontend Developer"}
+      ]
+    };
+  },
+  methods: {
+    changeName() {
+      this.name = 'New Name';
+      this.btnState = !this.btnState;
     }
   }
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
