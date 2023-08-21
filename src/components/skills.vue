@@ -1,9 +1,10 @@
 <template>
-  <div class="skills">
-    <h1 v-once>{{ name }}</h1>
-    <button v-on:click="changeName" :disabled="btnState">Change name</button>
-    {{ btnState ? 'The button is disabled' : 'The button is active' }}
+  <h1 v-once>{{ name }}</h1>
+  <button v-on:click="changeName" :disabled="btnState">Change name</button>
+  {{ btnState ? 'The button is disabled' : 'The button is active' }}
+  <div class="container">
     <div class="holder">
+      <p>These are the skills that I possess</p>
       <ul>
         <li v-for="(data, index) in skills" :key="index">{{ index + 1 }}. {{ data.skill }}</li>
       </ul>
@@ -13,6 +14,8 @@
       <div v-bind:class="{alert : showAlert, 'another-class' : showClass}"></div>
 
       <div v-bind:class="alertObject"></div>
+
+      <div v-bind:style="{backgroundColor: bgColor, width: bgWidth, height: bgHeight}"></div>
     </div>
   </div>
 </template>
@@ -32,7 +35,10 @@ export default {
       showClass: true,
       alertObject: {
         alert: true
-      }
+      },
+      bgColor: 'orange',
+      bgWidth: '100%',
+      bgHeight: '30px'
     };
   },
   methods: {
@@ -45,24 +51,6 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
 .alert {
   background-color: yellow;
   width: 100%;
@@ -73,6 +61,35 @@ a {
   background-color: lightblue;
   width: 100%;
   height: 30px;
+}
+
+.holder {
+  background: #fff;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  padding: 20px;
+  font-size: 1.3em;
+  background-color: #E0EDF4;
+  border-left: 5px solid #3EB3F6;
+  margin-bottom: 2px;
+  color: #3E5252;
+}
+
+p {
+  text-align: center;
+  padding: 30px 0;
+  color: grey;
+}
+
+.container {
+  box-shadow: 0 0 40px lightgrey;
 }
 </style>
 
